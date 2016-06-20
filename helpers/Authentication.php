@@ -39,7 +39,7 @@ class Authentication {
         } else {
             // cookie path is script dir.
             $cookie_path = dirname($_SERVER['SCRIPT_NAME'])==='/'?'/':dirname($_SERVER['SCRIPT_NAME']).'/';
-            $cookie_domain = $_SERVER['SERVER_NAME'];
+            $cookie_domain = $_SERVER['HTTP_X_FORWARDED_HOST'];
         }
         session_set_cookie_params($cookie_expire, $cookie_path, $cookie_domain,
                                   $cookie_secure, $cookie_httponly);
